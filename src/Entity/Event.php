@@ -7,7 +7,9 @@ use App\Repository\EventRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     attributes={"security"="is_granted('ROLE_ADMIN')"}
+ * )
  * @ORM\Entity(repositoryClass=EventRepository::class)
  */
 class Event

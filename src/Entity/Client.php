@@ -3,13 +3,16 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     attributes={"security"="is_granted('ROLE_ADMIN')"}
+ * )
  * @ORM\Entity(repositoryClass=ClientRepository::class)
  */
 class Client
@@ -43,6 +46,7 @@ class Client
 
     /**
      * @ORM\OneToMany(targetEntity=Event::class, mappedBy="client", orphanRemoval=true)
+     * @ApiSubresource
      */
     private $events;
 
