@@ -1,0 +1,13 @@
+knpu_oauth2_client:
+    clients:
+        auth0_main:
+            # this will be one of the supported types
+            type: auth0
+            client_id: 'bJoVQWXAorZSfdkej12z2GD5ngNHHVE8'
+            client_secret: '_16wvK9WS7gzz_hVTjAIz0ZE2XSC2jf81_7htZH2pSZdPPbcfH7jsq7njtVh8j5F'
+            # the route that you're redirected to after
+            # see the controller example below
+            redirect_route: connect_auth0_check
+            redirect_params: {}
+            account: 'amstrad'
+            region: 'eu'
