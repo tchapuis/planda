@@ -1,0 +1,15 @@
+@mixin text-ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin typography($preset: body) {
+  @each $key, $value in map-get-strict($typography-map, $preset) {
+    #{$key}: $value;
+  }
+}
+
+@mixin z-index($preset: base, $offset: 0) {
+  z-index: map-get-strict($z-index-map, $preset) + $offset;
+}
