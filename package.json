@@ -16,6 +16,8 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@fullcalendar/daygrid": "^5.1.0",
+        "@fullcalendar/react": "^5.1.0",
         "node-sass": "^4.14.1",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
