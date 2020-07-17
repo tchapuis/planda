@@ -4,6 +4,7 @@
         "@symfony/webpack-encore": "^0.30.0",
         "core-js": "^3.0.0",
         "regenerator-runtime": "^0.13.2",
+        "sass-loader": "^8.0.0",
         "webpack-notifier": "^1.6.0"
     },
     "license": "UNLICENSED",
@@ -15,6 +16,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "node-sass": "^4.14.1",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-proptypes": "^1.0.0",

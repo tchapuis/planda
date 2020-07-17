@@ -7,6 +7,7 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 }
 
 Encore
+    .enableSassLoader()
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path
