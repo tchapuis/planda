@@ -8,14 +8,14 @@ export function App() {
   document.title = 'Planda';
 
   return (
-    <main className="App">
-      <React.Suspense fallback="Loading">
-        <Router>
-          <Home path="/" />
-        </Router>
+    <main className="App container">
+        <React.Suspense fallback="Loading">
+          <Router>
+            <Home path="/" />
+          </Router>
 
-        {/* <Navigation /> */}
-      </React.Suspense>
+          {/* <Navigation /> */}
+        </React.Suspense>
     </main>
   )
 }

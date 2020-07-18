@@ -1,14 +1,21 @@
 import React from 'react'
-// import classNames from 'classnames';
-import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap'
+import { Form, FormGroup, Label, Input } from 'reactstrap'
 
 export function PatientForm() {
   return (
-    <InputGroup>
-      <InputGroupAddon addonType="prepend">
-        <InputGroupText></InputGroupText>
-      </InputGroupAddon>
-      <Input placeholder="username" />
-    </InputGroup>
-  )
+      <Form>
+        <FormGroup>
+          <Label for="exampleEmail">Téléphone</Label>
+          <Input type="email" name="phone" id="email" placeholder="Téléphone" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="examplePassword">Nom</Label>
+          <Input type="text" name="lastName" id="lastName" placeholder="Nom" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="examplePassword">Prénom</Label>
+          <Input type="text" name="firstName" id="firstName" placeholder="Prénom" />
+        </FormGroup>
+      </Form>
+    )
 }
