@@ -1,2 +1,3 @@
 export * from './Calendar'
-export * from './PatientForm'
+export * from './PatientRegistration'
+export * from './Jumbotron'

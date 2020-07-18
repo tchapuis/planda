@@ -1,0 +1,19 @@
+.jumbotron{
+    &-container{
+        height: 100vh;
+    }
+    
+    &-title{
+        @include typography(display);
+        color: color(headline);
+        margin-bottom: 22px;
+    }
+
+    &-subtitle{
+
+    }
+
+    &-text{
+
+    }
+}

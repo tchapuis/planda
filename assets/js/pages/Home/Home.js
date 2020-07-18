@@ -1,12 +1,14 @@
 import React from 'react'
-import { PatientForm } from '../../components'
+import { PatientRegistration, Jumbotron } from '../../components'
 
 export default function Home() {
+  const [processRegistration, setProcessRegistration] = React.useState(false);
+
   return (
-    <div className="row justify-content-md-center">
-      <section className="col-md-6 col-sm-12">
-        <h1>Home</h1>
-        <PatientForm />
+    <div className="home row justify-content-md-center align-items-center">
+      <section className="home-section col-md-8 col-sm-12">
+          {!processRegistration && <Jumbotron setProcessRegistration={setProcessRegistration} />}
+          {processRegistration && <PatientRegistration />}
       </section>
     </div>
   )

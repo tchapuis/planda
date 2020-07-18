@@ -2,16 +2,19 @@ import React from 'react'
 import FullCalendar from '@fullcalendar/react'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import classNames from 'classnames'
+import PropTypes from 'prop-types';
 
 const MONDAY = 1
 
-export function Calendar() {
+export function Calendar({ setProgressValue }) {
   const [events] = React.useState([
     { id: 1, title: 'Disponible', date: '2020-07-19T09:30:00+02:00' },
     { id: 2, title: 'Disponible', date: '2020-07-19T10:00:00+02:00' },
     { id: 3, title: 'Disponible', date: '2020-07-19T10:30:00+02:00' },
   ])
 
+  console.log('setProgressValue', setProgressValue);
+  
   const [selectedEventId, setSelectedEventId] = React.useState(null)
 
   const eventClick = ({ event }) => {
@@ -58,4 +61,9 @@ export function Calendar() {
       eventClick={eventClick}
     />
   )
+}
+
+
+Calendar.propTypes  = {
+  setProgressValue: PropTypes.func.isRequired
 }
