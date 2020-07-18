@@ -6,5 +6,5 @@ export function Card({children}) {
 }
 
 Card.propTypes  = {
-  children : PropTypes.element.isRequired
+  children : PropTypes.node.isRequired
 }
