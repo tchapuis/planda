@@ -1,0 +1,12 @@
+.fc-v-event{
+    border: none !important;
+    background-color: unset !important;
+}
+
+.planda-event{
+    &__selected{
+        background-color: red;
+    }
+
+    background-color: blue;
+}
