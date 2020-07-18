@@ -8,7 +8,7 @@ export default function Home() {
     <div className="home row justify-content-md-center align-items-center">
       <section className="home-section col-md-8 col-sm-12">
           {!processRegistration && <Jumbotron setProcessRegistration={setProcessRegistration} />}
-          {processRegistration && <PatientRegistration />}
+          {processRegistration && <PatientRegistration setProcessRegistration={setProcessRegistration} />}
       </section>
     </div>
   )

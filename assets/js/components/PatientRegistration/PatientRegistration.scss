@@ -1,0 +1,27 @@
+.progress{
+    border-radius: unset;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    position: relative;
+    top: -42px;
+    left: -24px;
+    width: calc(100% + 48px);
+    background-color: #e3e7f3;
+}
+
+.btn-outline-secondary{
+    margin-left: 15px;
+}
+
+.PatientRegistration{
+    &__label{
+        margin-bottom: 2px;
+        @include typography('body');
+        color: color('headline');
+    }
+
+    &__input::placeholder{
+        @include typography('body');
+        color: color('grey');
+    }
+}

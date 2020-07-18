@@ -1,19 +1,29 @@
 .jumbotron{
+    box-shadow:
+        0 12.5px 10px rgba(0, 0, 0, 0.03),
+        0 100px 80px rgba(0, 0, 0, 0.06);
+
     &-container{
         height: 100vh;
     }
     
     &-title{
-        @include typography(display);
-        color: color(headline);
+        @include typography('display');
+        color: color('headline');
         margin-bottom: 22px;
     }
 
     &-subtitle{
-
+        @include typography('sub-header');
+        color: color('headline');
+        margin-bottom: 22px;
+        line-height: 25px;
     }
 
     &-text{
-
+        @include typography('body');
+        color: color('grey');
+        margin-bottom: 22px;
+        line-height: 25px;
     }
 }

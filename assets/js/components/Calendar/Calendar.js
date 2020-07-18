@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 const MONDAY = 1
 
-export function Calendar({ setProgressValue }) {
+export function Calendar({ setProgressValue, selectedEventId, setSelectedEventId }) {
   const [events] = React.useState([
     { id: 1, title: 'Disponible', date: '2020-07-19T09:30:00+02:00' },
     { id: 2, title: 'Disponible', date: '2020-07-19T10:00:00+02:00' },
@@ -15,8 +15,6 @@ export function Calendar({ setProgressValue }) {
 
   console.log('setProgressValue', setProgressValue);
   
-  const [selectedEventId, setSelectedEventId] = React.useState(null)
-
   const eventClick = ({ event }) => {
     if (selectedEventId === event.id) {
       return setSelectedEventId(null)
@@ -65,5 +63,7 @@ export function Calendar({ setProgressValue }) {
 
 
 Calendar.propTypes  = {
-  setProgressValue: PropTypes.func.isRequired
+  setProgressValue: PropTypes.func.isRequired,
+  setSelectedEventId: PropTypes.func.isRequired,
+  selectedEventId: PropTypes.func.number
 }

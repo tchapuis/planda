@@ -9,6 +9,7 @@ export function App() {
 
   return (
     <main className="App container">
+        <div className="App__background" />
         <React.Suspense fallback="Loading">
           <Router>
             <Home path="/" />
