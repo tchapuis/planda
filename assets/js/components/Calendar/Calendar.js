@@ -2,18 +2,22 @@ import React from 'react'
 import FullCalendar from '@fullcalendar/react'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import classNames from 'classnames'
-import PropTypes from 'prop-types';
+import { PatientFormContext } from '../index';
 
 const MONDAY = 1
 
-export function Calendar({ setProgressValue, selectedEventId, setSelectedEventId }) {
+export function Calendar() {
+  const { patientFormState, setPatientFormState,  } = React.useContext(PatientFormContext);
+  const { selectedEventId } = patientFormState
+  console.log('patientFormState', patientFormState)
+  const setSelectedEventId = (selectedEventId) => {
+    setPatientFormState({...patientFormState, selectedEventId})
+  }
   const [events] = React.useState([
     { id: 1, title: 'Disponible', date: '2020-07-19T09:30:00+02:00' },
     { id: 2, title: 'Disponible', date: '2020-07-19T10:00:00+02:00' },
     { id: 3, title: 'Disponible', date: '2020-07-19T10:30:00+02:00' },
   ])
-
-  console.log('setProgressValue', setProgressValue);
   
   const eventClick = ({ event }) => {
     if (selectedEventId === event.id) {
@@ -61,9 +65,5 @@ export function Calendar({ setProgressValue, selectedEventId, setSelectedEventId
   )
 }
 
-
 Calendar.propTypes  = {
-  setProgressValue: PropTypes.func.isRequired,
-  setSelectedEventId: PropTypes.func.isRequired,
-  selectedEventId: PropTypes.func.number
 }
