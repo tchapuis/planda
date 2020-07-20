@@ -1,3 +1,5 @@
+@import './steps/FinalStep/FinalStep.scss';
+
 .progress{
     border-radius: unset;
     border-top-right-radius: 8px;
@@ -7,6 +9,9 @@
     left: 0px;
     width: 100%;
     background-color: #e3e7f3;
+    & .progress-bar{
+        background-color: rgba(0,123,255,0.59);
+    }
 }
 
 .btn-outline-secondary{
@@ -23,6 +28,12 @@
     &__input::placeholder{
         @include typography('body');
         color: color('grey');
+    }
+
+    &__title{
+        @include typography('header');
+        color: color('headline');
+        margin :30px 0 30px 0px;
     }
 }
 

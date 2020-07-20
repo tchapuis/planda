@@ -1,13 +1,13 @@
 import React from 'react'
 import { Progress  } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { UserInfosStep, CalendarStep } from './steps';
+import { UserInfosStep, CalendarStep, FinalStep } from './steps';
 
 export const PatientFormContext = React.createContext();
 export const PROGRESS_VALUES = {
   'step_1' : '15',
   'step_2' : '45',
-  'step_3': '80'
+  'step_3': '85'
 }
 
 export function PatientForm({cancelProcessRegistration}) {
@@ -15,7 +15,11 @@ export function PatientForm({cancelProcessRegistration}) {
     firstName : '',
     lastName : '',
     phone: '',
-    selectedEventId : null,
+    selectedEvent : 
+    {
+      id: null, 
+      label : ''
+    },
     progressValue: PROGRESS_VALUES.step_1
   })
 
@@ -33,6 +37,11 @@ export function PatientForm({cancelProcessRegistration}) {
           <CalendarStep>
             <Progress animated value={patientFormState.progressValue} />
           </CalendarStep>
+        )}
+        {PROGRESS_VALUES.step_3 === patientFormState.progressValue && ( 
+          <FinalStep>
+            <Progress animated value={patientFormState.progressValue} />
+          </FinalStep>
         )}
     </PatientFormContext.Provider>
   )

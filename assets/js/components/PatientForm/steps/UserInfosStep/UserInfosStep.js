@@ -36,6 +36,7 @@ export function UserInfosStep({cancelProcessRegistration, children}) {
     <div className="row justify-content-md-center">
     <div className="col-md-8">
       <Card>
+        <h2 className="PatientForm__title">Renseigner vos informations :</h2>
         <Form onSubmit={handleSubmit((value) => onSubmitUserInfo(value))}> 
           <FormGroup>
             <Label className={'PatientForm__label'} for="exampleEmail">Téléphone</Label>

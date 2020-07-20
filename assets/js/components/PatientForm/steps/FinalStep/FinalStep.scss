@@ -1,0 +1,11 @@
+.PatientForm__summary{
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px 10px;
+
+    p{
+        @include typography('body');
+        color: color('headline');  
+        line-height: 24px;
+    }
+}

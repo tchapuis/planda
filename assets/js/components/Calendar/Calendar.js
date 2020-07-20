@@ -4,16 +4,18 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import classNames from 'classnames'
 import { PatientFormContext } from '../index';
 import frLocale from '@fullcalendar/core/locales/fr';
+import PropTypes from 'prop-types';
 
 const MONDAY = 1
 
-export function Calendar() {
+export function Calendar({setCalendarEventError}) {
   const { patientFormState, setPatientFormState,  } = React.useContext(PatientFormContext);
-  const { selectedEventId } = patientFormState
+  const { selectedEvent } = patientFormState
 
-  const setSelectedEventId = (selectedEventId) => {
-    setPatientFormState({...patientFormState, selectedEventId})
+  const setSelectedEvent = (selectedEvent) => {
+    setPatientFormState({...patientFormState, selectedEvent : selectedEvent})
   }
+
   const [events] = React.useState([
     { id: 1, date: '2020-07-22T09:30:00+02:00' },
     { id: 2, date: '2020-07-21T10:00:00+02:00' },
@@ -26,15 +28,22 @@ export function Calendar() {
   ])
   
   const eventClick = ({ event }) => {
-    if (selectedEventId === event.id) {
-      return setSelectedEventId(null)
+    if (selectedEvent.id === event.id) {
+      return setSelectedEvent({id: null, label: ''})
     }
-    return setSelectedEventId(event.id)
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric' };
+    const eventDate = new Date(event.startStr);
+    setCalendarEventError(null);
+    
+    return setSelectedEvent({
+      id: event.id,
+      label: eventDate.toLocaleDateString('fr-FR', dateOptions)
+    })
   }
 
   function renderEventContent(eventInfo) {
     const { timeText, event } = eventInfo
-    const isEventSelected = event.id === selectedEventId
+    const isEventSelected = event.id === selectedEvent.id
     const eventClasses = classNames('planda-event', {
       'planda-event__selected': isEventSelected,
     })
@@ -71,4 +80,5 @@ export function Calendar() {
 }
 
 Calendar.propTypes  = {
+  setCalendarEventError: PropTypes.func.isRequired
 }
