@@ -3,20 +3,26 @@ import FullCalendar from '@fullcalendar/react'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import classNames from 'classnames'
 import { PatientFormContext } from '../index';
+import frLocale from '@fullcalendar/core/locales/fr';
 
 const MONDAY = 1
 
 export function Calendar() {
   const { patientFormState, setPatientFormState,  } = React.useContext(PatientFormContext);
   const { selectedEventId } = patientFormState
-  console.log('patientFormState', patientFormState)
+
   const setSelectedEventId = (selectedEventId) => {
     setPatientFormState({...patientFormState, selectedEventId})
   }
   const [events] = React.useState([
-    { id: 1, title: 'Disponible', date: '2020-07-19T09:30:00+02:00' },
-    { id: 2, title: 'Disponible', date: '2020-07-19T10:00:00+02:00' },
-    { id: 3, title: 'Disponible', date: '2020-07-19T10:30:00+02:00' },
+    { id: 1, date: '2020-07-22T09:30:00+02:00' },
+    { id: 2, date: '2020-07-21T10:00:00+02:00' },
+    { id: 3, date: '2020-07-21T10:30:00+02:00' },
+    { id: 4, date: '2020-07-21T11:00:00+02:00' },
+    { id: 5, date: '2020-07-21T11:30:00+02:00' },
+    { id: 6, date: '2020-07-21T13:30:00+02:00' },
+    { id: 7, date: '2020-07-21T14:00:00+02:00' },
+    { id: 8, date: '2020-07-21T14:30:00+02:00' },
   ])
   
   const eventClick = ({ event }) => {
@@ -42,21 +48,20 @@ export function Calendar() {
 
   return (
     <FullCalendar
+      allDaySlot={false}
       height={600}
       firstDay={MONDAY}
-      locale="fr"
+      locale={frLocale}
       plugins={[timeGridPlugin]}
       initialView="timeGridWeek"
-      nowIndicator
       slotDuration="00:30:00"
-      slotMinTime="09:30:00"
+      slotMinTime="09:00:00"
       slotMaxTime="20:00:00"
       defaultTimedEventDuration="00:30:00"
       slotLabelFormat={{
         hour: 'numeric',
         minute: '2-digit',
-        omitZeroMinute: true,
-        meridiem: 'short',
+        omitZeroMinute: false,
       }}
       eventContent={renderEventContent}
       events={events}

@@ -1,16 +1,102 @@
+.planda-event{
+    @include typography('body');
+    transition: linear 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: #9ecaa0;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &__selected{
+        background-color: #0062cc;
+    }
+
+    &:hover{
+        filter: brightness(92%);
+    }
+
+    > i{
+        padding-left: 4px;
+    }
+}
+
+tr {
+     height: 25px !important;
+}
+
+.fc{
+    margin-bottom: 1rem;
+}
+.fc-direction-ltr .fc-timegrid-col-events{
+    margin: unset !important;
+}
+.fc-timegrid-event .fc-event-main{
+    padding: unset !important;
+}
+
 .fc-v-event{
     border: none !important;
     background-color: unset !important;
 }
 
-.planda-event{
-    &__selected{
-        background-color: red;
-    }
-
-    background-color: blue;
+.fc-scrollgrid-sync-inner{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
-.fc{
-    margin-bottom: 1rem;
+.fc-col-header-cell-cushion{
+    width: 100% !important;
+}
+
+.fc .fc-button[type="button"] {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.fc-toolbar-title{ 
+    @include typography('body');
+    color: color('headline');
+}
+
+.fc-col-header-cell-cushion, .fc-timegrid-slot {
+    @include typography('body');
+    color: color('headline') !important;
+    text-transform: capitalize;
+}
+.fc-col-header-cell-cushion {
+    padding: 0 8px;
+}
+.fc-day-today{
+    background-color: rgba(139,150,212,0.08) !important;
+}
+
+.fc-col-header-cell.fc-day.fc-day-today > div{
+    background-color: rgba(139,150,212,0.2) !important;
+}
+
+.fc-direction-ltr .fc-timegrid-col-events {
+    margin: 0 2.5% 0 2px;
 }

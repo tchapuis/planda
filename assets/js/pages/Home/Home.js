@@ -6,7 +6,7 @@ export default function Home() {
 
   return (
     <div className="home row justify-content-md-center align-items-center">
-      <section className="home-section col-md-8 col-sm-12">
+      <section className="home-section col-md-12 col-sm-12">
           {!processRegistration && <Jumbotron setProcessRegistration={setProcessRegistration} />}
           {processRegistration && <PatientForm cancelProcessRegistration={() => setProcessRegistration(false)} />}
       </section>

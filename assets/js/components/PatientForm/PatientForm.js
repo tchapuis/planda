@@ -1,6 +1,5 @@
 import React from 'react'
 import { Progress  } from 'reactstrap';
-import { Card } from '../index';
 import PropTypes from 'prop-types';
 import { UserInfosStep, CalendarStep } from './steps';
 
@@ -24,11 +23,17 @@ export function PatientForm({cancelProcessRegistration}) {
     <PatientFormContext.Provider value={{
       patientFormState, setPatientFormState
     }}>
-      <Card>
-        <Progress animated value={patientFormState.progressValue} />
-        {PROGRESS_VALUES.step_1 === patientFormState.progressValue && ( <UserInfosStep cancelProcessRegistration={cancelProcessRegistration} />)}
-        {PROGRESS_VALUES.step_2 === patientFormState.progressValue && ( <CalendarStep />)}
-      </Card>
+
+        {PROGRESS_VALUES.step_1 === patientFormState.progressValue && ( 
+          <UserInfosStep cancelProcessRegistration={cancelProcessRegistration}>
+            <Progress animated value={patientFormState.progressValue} />
+          </UserInfosStep>
+        )}
+        {PROGRESS_VALUES.step_2 === patientFormState.progressValue && ( 
+          <CalendarStep>
+            <Progress animated value={patientFormState.progressValue} />
+          </CalendarStep>
+        )}
     </PatientFormContext.Provider>
   )
 }

@@ -2,10 +2,10 @@
     border-radius: unset;
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
-    position: relative;
-    top: -42px;
-    left: -24px;
-    width: calc(100% + 48px);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
     background-color: #e3e7f3;
 }
 
@@ -29,4 +29,9 @@
 .alert{
     padding: 0.50rem 1.25rem;
     margin-top: 0.5rem;
+}
+
+.last-form-goup-button{
+    margin: unset;
+    margin-top: 30px;
 }
