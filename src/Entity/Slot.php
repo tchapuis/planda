@@ -32,11 +32,6 @@ class Slot
      */
     private ?\DateTimeImmutable $end;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Event::class, cascade={"persist", "remove"})
-     */
-    private $event;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -62,18 +57,6 @@ class Slot
     public function setEnd(\DateTimeImmutable $end): self
     {
         $this->end = $end;
-
-        return $this;
-    }
-
-    public function getEvent(): ?Event
-    {
-        return $this->event;
-    }
-
-    public function setEvent(?Event $event): self
-    {
-        $this->event = $event;
 
         return $this;
     }
