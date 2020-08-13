@@ -4,9 +4,13 @@ import { Card } from '../../../index';
 import { PatientFormContext, PROGRESS_VALUES } from '../../index';
 import PropTypes from 'prop-types';
 
-export function FinalStep({children}) {  
+export function FinalStep({children}) {
   const { patientFormState, setPatientFormState,  } = React.useContext(PatientFormContext);
-  console.log('patientFormState', patientFormState)
+
+  const handleDataSubmition = () => {
+      fetch(`${process.env.REACT_API_DOMAIN}/api/users`)
+  }
+
   return (
       <div className="row justify-content-md-center">
         <div className="col-md-8">
@@ -22,7 +26,7 @@ export function FinalStep({children}) {
                 <FormGroup className='last-form-goup-button'>
                   <Button onClick={()=> console.log('Confirmer votre rendez-vous')} color="primary">Confirmer votre rendez-vous</Button>
                   <Button
-                    onClick={()=> setPatientFormState({...patientFormState, progressValue: PROGRESS_VALUES.step_2})} 
+                    onClick={()=> setPatientFormState({...patientFormState, progressValue: PROGRESS_VALUES.step_2})}
                     className="btn btn-outline-secondary">Retour</Button>
                 </FormGroup>
             </Form>

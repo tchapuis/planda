@@ -14,22 +14,40 @@ const userInfosSchema = yup.object().shape({
   firstName: yup.string().required().max(30),
 });
 
-export function UserInfosStep({cancelProcessRegistration, children}) {  
+export function UserInfosStep({cancelProcessRegistration, children}) {
   const { patientFormState, setPatientFormState,  } = React.useContext(PatientFormContext);
   const { handleSubmit, errors, control } = useForm({
     resolver: yupResolver(userInfosSchema)
   });
 
   const onSubmitUserInfo = (data) => {
-    const { 
+    const {
       firstName,
       lastName,
       phone,
     } = data;
 
-    setPatientFormState({
-      ...patientFormState, progressValue: PROGRESS_VALUES.step_2, firstName, lastName, phone
+    fetch(`${process.env.REACT_API_DOMAIN}/api/users`, {
+      method: 'POST',
+      body: JSON.stringify({firstname: firstName, lastname: lastName, phone})
     })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw Error(response.statusText);
+          }
+        })
+        .then(user => {
+          console.log(user)
+          setPatientFormState({
+            ...patientFormState, progressValue: PROGRESS_VALUES.step_2, firstName, lastName, phone
+          })
+        })
+        .catch(error => {
+          console.error('There has been a problem with your fetch operation:', error);
+        });
+
   }
 
   return (
@@ -37,7 +55,7 @@ export function UserInfosStep({cancelProcessRegistration, children}) {
     <div className="col-md-8">
       <Card>
         <h2 className="PatientForm__title">Renseigner vos informations :</h2>
-        <Form onSubmit={handleSubmit((value) => onSubmitUserInfo(value))}> 
+        <Form onSubmit={handleSubmit((value) => onSubmitUserInfo(value))}>
           <FormGroup>
             <Label className={'PatientForm__label'} for="exampleEmail">Téléphone</Label>
             <Controller

@@ -43,6 +43,7 @@
         "react"
     ],
     "rules": {
-        "no-restricted-imports": ["error", "import1", "import2"]
+        "no-restricted-imports": ["error", "import1", "import2"],
+        "indent": ["error", 4]
     }
 }

@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class   Auth0Controller extends AbstractController
+class Auth0Controller extends AbstractController
 {
     /**
      * Link to this controller to start the "connect" process
@@ -29,8 +29,8 @@ class   Auth0Controller extends AbstractController
      */
     public function connectCheckAction()
     {
-        return $this->json([
-                'user' => $this->getUser() ? $this->getUser()->getId() : null]
-        );
+
+        return $this->redirectToRoute('app');
+
     }
 }

@@ -18,8 +18,8 @@ export function Calendar({setCalendarEventError}) {
 
   const [events, setEvents] = React.useState([])
 
-  React.useEffect(async () => {
-    await fetch(`${process.env.REACT_API_DOMAIN}/api/slots`, {
+  React.useEffect(() => {
+    fetch(`${process.env.REACT_API_DOMAIN}/api/slots`, {
       headers: {
         'Accept': 'application/json'
       }
