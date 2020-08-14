@@ -13,6 +13,7 @@ export function App() {
         <React.Suspense fallback="Loading">
           <Router>
             <Home path="/" />
+            <Home path="/app" />
           </Router>
 
           {/* <Navigation /> */}

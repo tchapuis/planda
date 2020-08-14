@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ApiResource(
- *     attributes={"security"="is_granted('ROLE_ADMIN')"}
+ *     attributes={"security"="is_granted('ROLE_USER')"}
  * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */

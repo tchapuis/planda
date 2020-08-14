@@ -12,12 +12,14 @@ export const PROGRESS_VALUES = {
 
 export function PatientForm({cancelProcessRegistration}) {
   const [patientFormState, setPatientFormState] =  React.useState({
+    userId : null,
     firstName : '',
     lastName : '',
     phone: '',
-    selectedEvent : 
+    email: '',
+    selectedEvent :
     {
-      id: null, 
+      id: null,
       label : ''
     },
     progressValue: PROGRESS_VALUES.step_1
@@ -28,17 +30,17 @@ export function PatientForm({cancelProcessRegistration}) {
       patientFormState, setPatientFormState
     }}>
 
-        {PROGRESS_VALUES.step_1 === patientFormState.progressValue && ( 
+        {PROGRESS_VALUES.step_1 === patientFormState.progressValue && (
           <UserInfosStep cancelProcessRegistration={cancelProcessRegistration}>
             <Progress animated value={patientFormState.progressValue} />
           </UserInfosStep>
         )}
-        {PROGRESS_VALUES.step_2 === patientFormState.progressValue && ( 
+        {PROGRESS_VALUES.step_2 === patientFormState.progressValue && (
           <CalendarStep>
             <Progress animated value={patientFormState.progressValue} />
           </CalendarStep>
         )}
-        {PROGRESS_VALUES.step_3 === patientFormState.progressValue && ( 
+        {PROGRESS_VALUES.step_3 === patientFormState.progressValue && (
           <FinalStep>
             <Progress animated value={patientFormState.progressValue} />
           </FinalStep>

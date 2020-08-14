@@ -20,6 +20,28 @@ export function UserInfosStep({cancelProcessRegistration, children}) {
     resolver: yupResolver(userInfosSchema)
   });
 
+  React.useEffect(() => {
+    fetch(`${process.env.REACT_API_DOMAIN}/api/me`, {
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+        .then(res => res.json())
+        .then(responseUser => {
+          const userId = responseUser.user;
+
+          fetch(`${process.env.REACT_API_DOMAIN}/api/users/${userId}`)
+              .then(res => res.json())
+              .then(user => {
+                setPatientFormState({
+                  ...patientFormState, userId: user.id, firstName: user.firstname, lastName: user.lastname, phone: user.phone, email: user.email
+                })
+              })
+
+
+        })
+  }, [])
+
   const onSubmitUserInfo = (data) => {
     const {
       firstName,
@@ -27,9 +49,13 @@ export function UserInfosStep({cancelProcessRegistration, children}) {
       phone,
     } = data;
 
-    fetch(`${process.env.REACT_API_DOMAIN}/api/users`, {
-      method: 'POST',
-      body: JSON.stringify({firstname: firstName, lastname: lastName, phone})
+    fetch(`${process.env.REACT_API_DOMAIN}/api/users/${patientFormState.userId}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({firstname: firstName, lastname: lastName, phone, enabled: true})
     })
         .then(response => {
           if (response.ok) {
@@ -50,7 +76,7 @@ export function UserInfosStep({cancelProcessRegistration, children}) {
 
   }
 
-  return (
+  return (patientFormState.userId ? (
     <div className="row justify-content-md-center">
     <div className="col-md-8">
       <Card>
@@ -103,7 +129,7 @@ export function UserInfosStep({cancelProcessRegistration, children}) {
         </Card>
       </div>
     </div>
-  )
+  ): <div>Loading</div>)
 }
 
 UserInfosStep.propTypes  = {

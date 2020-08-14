@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 export function Jumbotron({ setProcessRegistration }) {
   return (
-
       <div className="row justify-content-md-center">
         <div className="col-md-8 jumbotron">
             <h1 className="jumbotron-title">Bienvenue sur Planda</h1>

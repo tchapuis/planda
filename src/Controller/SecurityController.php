@@ -16,4 +16,14 @@ class SecurityController extends AbstractController
                 'user' => $this->getUser() ? $this->getUser()->getId() : null]
         );
     }
+
+    /**
+     * @Route("/api/me", name="app_me", methods={"GET"})
+     */
+    public function me()
+    {
+        return $this->json([
+                'user' => $this->getUser() ? $this->getUser()->getId() : null]
+        );
+    }
 }
